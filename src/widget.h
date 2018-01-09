@@ -29,7 +29,7 @@ public:
 
     ~Widget();
 
-    void fixedPos();
+    void setSizeAndPos();
 
 private:
 

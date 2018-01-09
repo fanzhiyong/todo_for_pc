@@ -48,12 +48,16 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::fixedPos()
+void Widget::setSizeAndPos()
 {
     QDesktopWidget * desktop = QApplication::desktop();
     QRect desktopRt = desktop->screenGeometry();
 
-    int x = desktopRt.width() - width();
+    // size
+    resize(desktopRt.width()/3, desktopRt.height()/3);
+
+    // pos
+    int x = desktopRt.width() - width() - 3;
     int y = 0;
     setGeometry(x, y, width(), height());
 }

@@ -6,7 +6,7 @@
 
 /* 字体和字体颜色 */
 #importAndUrgencyLabel, #importAndNotUrgencyLabel, #notImportAndUrgencyLabel, #notImportAndNotUrgencyLabel{
-	font-size: 16px;
+        font-size: 16px;
 }
 
 #importAndUrgencyLabel{
@@ -30,19 +30,19 @@ Widget{
 
 /* 输入框 */
 #importAndUrgencyEdit, #importAndNotUrgencyEdit, #notImportAndUrgencyEdit, #notImportAndNotUrgencyEdit{
-	font-size: 16px;
+        font-size: 14px;
 	background-color: #fdfdc9;
 }
 
 #importAndUrgencyEdit{
-	border: 2px solid #f80000;
+        border: 3px solid #f80000;
 }
 #importAndNotUrgencyEdit{
-	border: 2px solid #f84444;
+        border: 3px solid #f88846;
 }
 #notImportAndUrgencyEdit{
-	border: 2px solid #2d51ea;
+        border: 3px solid #2d51ea;
 }
 #notImportAndNotUrgencyEdit{
-	border: 2px solid #2dac2b;
+        border: 3px solid #2dac2b;
 }

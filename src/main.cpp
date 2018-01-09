@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     Widget w;
     w.show();
-    w.fixedPos();
+    w.setSizeAndPos();
 
     return a.exec();
 }
