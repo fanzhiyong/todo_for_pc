@@ -37,6 +37,8 @@ private:
 
     void loadData();
 
+    void loadTrayIcon();
+
     QString getText(TextType type);
 
     void saveText(TextType type, const QString & text);
@@ -60,6 +62,7 @@ private:
     QTimer * m_saveTimer;
 
     QSystemTrayIcon * m_trayIcon;
+    QMenu           * m_trayIconMenu;
 };
 
 #endif // WIDGET_H

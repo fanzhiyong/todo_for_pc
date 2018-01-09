@@ -6,6 +6,7 @@
 #include <QDesktopWidget>
 #include <QTimer>
 #include "compileconfig.h"
+#include <QMenu>
 
 //#include <QSystemTrayIcon>
 
@@ -21,9 +22,7 @@ Widget::Widget(QWidget *parent) :
     m_trayIcon = new QSystemTrayIcon(this);
 
     // 托盘图标
-    m_trayIcon->setIcon(QIcon(":/res/image/tray_icon.png"));
-    m_trayIcon->setToolTip("Todo for work");
-    m_trayIcon->show();
+    loadTrayIcon();
 
     // 去掉边框
     setWindowFlags(windowFlags() ^ Qt::FramelessWindowHint);
@@ -91,6 +90,19 @@ void Widget::loadData()
             edit->setPlainText(text);
         }
     }
+}
+
+void Widget::loadTrayIcon()
+{
+    m_trayIconMenu = new QMenu(this);
+    // 菜单
+    m_trayIconMenu->addAction("Quit(&Q)", this, SLOT(close()));
+    m_trayIcon->setContextMenu(m_trayIconMenu);
+
+    // 托盘图标
+    m_trayIcon->setIcon(QIcon(":/res/image/tray_icon.png"));
+    m_trayIcon->setToolTip("Todo for pc");
+    m_trayIcon->show();
 }
 
 QString Widget::getText(TextType type)
