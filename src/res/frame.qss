@@ -1,0 +1,48 @@
+﻿/* 通用QSS文件，注意：文件格式必须是UTF-8无BOM */
+*{
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+
+/* 字体和字体颜色 */
+#importAndUrgencyLabel, #importAndNotUrgencyLabel, #notImportAndUrgencyLabel, #notImportAndNotUrgencyLabel{
+	font-size: 16px;
+}
+
+#importAndUrgencyLabel{
+	color: #f80000;
+}
+#importAndNotUrgencyLabel{
+	color: #f84444;
+}
+#notImportAndUrgencyLabel{
+	color: #2d51ea;
+}
+#notImportAndNotUrgencyLabel{
+	color: #2dac2b;
+}
+
+/*主页面*/
+Widget{
+	background-color: #000000;
+	border: 1px solid #000000;
+}
+
+/* 输入框 */
+#importAndUrgencyEdit, #importAndNotUrgencyEdit, #notImportAndUrgencyEdit, #notImportAndNotUrgencyEdit{
+	font-size: 16px;
+	background-color: #fdfdc9;
+}
+
+#importAndUrgencyEdit{
+	border: 2px solid #f80000;
+}
+#importAndNotUrgencyEdit{
+	border: 2px solid #f84444;
+}
+#notImportAndUrgencyEdit{
+	border: 2px solid #2d51ea;
+}
+#notImportAndNotUrgencyEdit{
+	border: 2px solid #2dac2b;
+}

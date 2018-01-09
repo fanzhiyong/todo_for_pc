@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/frame.qss</file>
+        <file>res/image/tray_icon.png</file>
+    </qresource>
+</RCC>
