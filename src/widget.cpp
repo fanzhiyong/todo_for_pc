@@ -54,10 +54,10 @@ void Widget::setSizeAndPos()
     QRect desktopRt = desktop->screenGeometry();
 
     // size
-    resize(desktopRt.width()/3, desktopRt.height()/3);
+    resize(desktopRt.width()/3, desktopRt.height()/2.5);
 
     // pos
-    int x = desktopRt.width() - width() - 3;
+    int x = desktopRt.width() - width() - 2;
     int y = 0;
     setGeometry(x, y, width(), height());
 }
