@@ -96,7 +96,7 @@ void Widget::loadTrayIcon()
 {
     m_trayIconMenu = new QMenu(this);
     // 菜单
-    m_trayIconMenu->addAction("Quit(&Q)", this, SLOT(close()));
+    m_trayIconMenu->addAction("Quit(&Q)", this, SLOT(closeAll()));
     m_trayIcon->setContextMenu(m_trayIconMenu);
 
     // 托盘图标
@@ -172,6 +172,12 @@ QString Widget::getFileName(TextType type)
     default:
         return "";
     }
+}
+
+void Widget::closeAll()
+{
+    m_trayIcon->hide();
+    QApplication::quit();
 }
 
 void Widget::onSaveTimeout()

@@ -51,6 +51,8 @@ private:
 
 private slots:
 
+    void closeAll();
+
     void onSaveTimeout();
 
     void onActivated(QSystemTrayIcon::ActivationReason reason);
