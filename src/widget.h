@@ -39,6 +39,8 @@ private:
 
     void loadTrayIcon();
 
+    void loadConfig();
+
     QString getText(TextType type);
 
     void saveText(TextType type, const QString & text);

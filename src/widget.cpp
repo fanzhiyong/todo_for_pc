@@ -38,6 +38,9 @@ Widget::Widget(QWidget *parent) :
     // 加载数据
     loadData();
 
+    // 加载配置
+    loadConfig();
+
     connect(m_saveTimer, SIGNAL(timeout()), this, SLOT(onSaveTimeout()));
     connect(m_trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this,
             SLOT(onActivated(QSystemTrayIcon::ActivationReason)));
@@ -113,6 +116,12 @@ void Widget::loadTrayIcon()
     m_trayIcon->setIcon(QIcon(":/res/image/tray_icon.png"));
     m_trayIcon->setToolTip("Todo for pc");
     m_trayIcon->show();
+}
+
+void Widget::loadConfig()
+{
+    ConfigManager * cm = ConfigManager::getInstance();
+    onMenuStartingUp(cm->isStartingUpEnabled());
 }
 
 QString Widget::getText(TextType type)
@@ -194,11 +203,11 @@ void Widget::onMenuStartingUp(bool checked)
     if (checked)
     {
         QString strAppPath = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-        reg.setValue("TodoFoPc", strAppPath);
+        reg.setValue("TodoForPc", strAppPath);
     }
     else
     {
-        reg.setValue("TodoFoPc", "");
+        reg.setValue("TodoForPc", "");
     }
 
 }
