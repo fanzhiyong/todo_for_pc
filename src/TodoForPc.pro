@@ -29,10 +29,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        widget.cpp \
+    configmanager.cpp
 
 HEADERS  += widget.h \
-    compileconfig.h
+    compileconfig.h \
+    configmanager.h
 
 FORMS    += widget.ui
 

@@ -7,6 +7,7 @@
 #include <QTimer>
 #include "compileconfig.h"
 #include <QMenu>
+#include "configmanager.h"
 
 //#include <QSystemTrayIcon>
 
@@ -96,7 +97,14 @@ void Widget::loadTrayIcon()
 {
     m_trayIconMenu = new QMenu(this);
     // 菜单
-    m_trayIconMenu->addAction("Quit(&Q)", this, SLOT(closeAll()));
+    // 开机启动
+    QAction * action = m_trayIconMenu->addAction("Starting up", this, SLOT(onMenuStartingUp(bool)));
+    action->setCheckable(true);
+    ConfigManager * cm = ConfigManager::getInstance();
+    action->setChecked(cm->isStartingUpEnabled());
+
+    // 退出
+    m_trayIconMenu->addAction("Quit", this, SLOT(onMenuQuit()));
     m_trayIcon->setContextMenu(m_trayIconMenu);
 
     // 托盘图标
@@ -174,7 +182,13 @@ QString Widget::getFileName(TextType type)
     }
 }
 
-void Widget::closeAll()
+void Widget::onMenuStartingUp(bool checked)
+{
+    ConfigManager * cm = ConfigManager::getInstance();
+    cm->setStartingUpEnabled(checked);
+}
+
+void Widget::onMenuQuit()
 {
     m_trayIcon->hide();
     QApplication::quit();

@@ -51,7 +51,9 @@ private:
 
 private slots:
 
-    void closeAll();
+    void onMenuStartingUp(bool checked);
+
+    void onMenuQuit();
 
     void onSaveTimeout();
 
