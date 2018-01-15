@@ -8,6 +8,8 @@
 #include "compileconfig.h"
 #include <QMenu>
 #include "configmanager.h"
+#include <QDir>
+#include <QSettings>
 
 //#include <QSystemTrayIcon>
 
@@ -186,6 +188,19 @@ void Widget::onMenuStartingUp(bool checked)
 {
     ConfigManager * cm = ConfigManager::getInstance();
     cm->setStartingUpEnabled(checked);
+
+    // 设置开机启动
+    QSettings reg("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+    if (checked)
+    {
+        QString strAppPath = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
+        reg.setValue("TodoFoPc", strAppPath);
+    }
+    else
+    {
+        reg.setValue("TodoFoPc", "");
+    }
+
 }
 
 void Widget::onMenuQuit()
