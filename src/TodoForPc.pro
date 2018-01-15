@@ -13,7 +13,7 @@ TEMPLATE = app
 
 include(qtsingleapplication/src/qtsingleapplication.pri)
 
-VERSION = 1.0.0.1 # major.minor.patch.build
+VERSION = 1.0.0.2 # major.minor.patch.build
 RC_ICONS = todo_list.ico
 
 # The following define makes your compiler emit warnings if you use
