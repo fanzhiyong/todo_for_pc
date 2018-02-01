@@ -10,6 +10,7 @@
 #include "configmanager.h"
 #include <QDir>
 #include <QSettings>
+#include "datamanager.h"
 
 //#include <QSystemTrayIcon>
 
@@ -86,15 +87,12 @@ void Widget::loadData()
         IMPORTANT_URGENCY, IMPORTANT_NOT_URGENCY, NOT_IMPORTANT_URGENCY, NOT_IMPORTANT_NOT_URGENCY
     };
 
+    DataManager * dm = DataManager::getInstance();
+
     foreach (auto type, types)
     {
-        QString text = readText(type);
-        m_saveData[type] = text;
-        QTextEdit * edit = getEdit(type);
-        if( edit != NULL )
-        {
-            edit->setPlainText(text);
-        }
+        QString text = dm->getData(type);
+        getEdit(type)->setPlainText(text);
     }
 }
 
@@ -137,28 +135,6 @@ QString Widget::getText(TextType type)
     }
 }
 
-void Widget::saveText(TextType type, const QString &text)
-{
-    QFile file(getFileName(type));
-    if( file.open(QIODevice::WriteOnly) )
-    {
-        m_saveData[type] = text;
-        file.write(text.toUtf8());
-        file.close();
-    }
-}
-
-QString Widget::readText(TextType type)
-{
-    QFile file(getFileName(type));
-    if( file.open(QIODevice::ReadOnly) )
-    {
-        return file.readAll();
-    }
-
-    return "";
-}
-
 QTextEdit *Widget::getEdit(TextType type)
 {
     switch( type )
@@ -173,23 +149,6 @@ QTextEdit *Widget::getEdit(TextType type)
         return ui->notImportAndNotUrgencyEdit;
     default:
         return NULL;
-    }
-}
-
-QString Widget::getFileName(TextType type)
-{
-    switch( type )
-    {
-    case IMPORTANT_URGENCY:
-        return "important_urgency.txt";
-    case IMPORTANT_NOT_URGENCY:
-        return "important_not_urgency.txt";
-    case NOT_IMPORTANT_URGENCY:
-        return "not_important_urgency.txt";
-    case NOT_IMPORTANT_NOT_URGENCY:
-        return "not_important_not_urgency.txt";
-    default:
-        return "";
     }
 }
 
@@ -226,12 +185,11 @@ void Widget::onSaveTimeout()
         IMPORTANT_URGENCY, IMPORTANT_NOT_URGENCY, NOT_IMPORTANT_URGENCY, NOT_IMPORTANT_NOT_URGENCY
     };
 
+    DataManager * dm = DataManager::getInstance();
+
     foreach (auto type, types)
     {
-        if( getText(type) != m_saveData[type] )
-        {
-            saveText(type, getText(type));
-        }
+        dm->setData(type, getText(type));
     }
 }
 

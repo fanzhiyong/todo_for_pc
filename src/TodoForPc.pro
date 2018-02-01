@@ -30,11 +30,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         widget.cpp \
-    configmanager.cpp
+    configmanager.cpp \
+    datamanager.cpp \
+    global.cpp
 
 HEADERS  += widget.h \
     compileconfig.h \
-    configmanager.h
+    configmanager.h \
+    datamanager.h \
+    global.h \
+    json.hpp
 
 FORMS    += widget.ui
 

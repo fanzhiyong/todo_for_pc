@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QMap>
 #include <QSystemTrayIcon>
+#include "global.h"
 
 namespace Ui {
 class Widget;
@@ -11,14 +12,6 @@ class Widget;
 
 class QTextEdit;
 //class QSystemTrayIcon;
-
-enum TextType
-{
-    IMPORTANT_URGENCY,
-    IMPORTANT_NOT_URGENCY,
-    NOT_IMPORTANT_URGENCY,
-    NOT_IMPORTANT_NOT_URGENCY
-};
 
 class Widget : public QWidget
 {
@@ -43,13 +36,7 @@ private:
 
     QString getText(TextType type);
 
-    void saveText(TextType type, const QString & text);
-
-    QString readText(TextType type);
-
     QTextEdit * getEdit(TextType type);
-
-    QString getFileName(TextType type);
 
 private slots:
 
@@ -64,8 +51,7 @@ private slots:
 private:
     Ui::Widget *ui;
 
-    QMap<TextType, QString> m_saveData;
-    QTimer * m_saveTimer;
+    QTimer          * m_saveTimer;
 
     QSystemTrayIcon * m_trayIcon;
     QMenu           * m_trayIconMenu;
